@@ -1,10 +1,8 @@
-## 🏗 Private Cloud Platform
+## Private Cloud Platform
 
 > Security-first, AI-ready private cloud infrastructure built on a Minisforum UM790.
 
----
-
-### 📌 Overview
+### Overview
 
 This repository documents the design, implementation, and evolution of a layered private cloud platform running on a Minisforum UM790.
 
@@ -19,9 +17,9 @@ The objective is to build an enterprise-style, security-first infrastructure usi
 - Infrastructure-as-Code (IaC)
 - Observability and automation-first mindset
 
-This is not a home lab experiment.  
-This is a reproducible platform engineering project.
-And yes, an AI does help with the 'aesthetic emoji' formatting here. My human brain is busy making sure the engineering actually works.
+-> This is not a home lab experiment.  
+-> This is a reproducible platform engineering project.
+-> And yes, an AI does help with the 'aesthetic emoji' formatting here. My human brain is busy making sure the engineering actually works.
 
 ---
 
@@ -43,8 +41,7 @@ And yes, an AI does help with the 'aesthetic emoji' formatting here. My human br
 ---
 
 ### 🧱 Architecture (Current State)
-
-
+'''text
 Internet
  ↓
  ISP Router
@@ -56,16 +53,15 @@ Internet
  LAN / VLAN Segmentation
  ↓
  Virtual Machines / Services
-
+'''
 ---
 
 ### 📂 Repository Structure
-
-
+'''text
 private-cloud-platform/
  ├── 0-foundation/ 
  ├── 1-networking/ 
-
+'''
 #### 0-foundation/
 Contains:
 - Hardware inventory
