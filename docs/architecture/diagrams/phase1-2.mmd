@@ -1,0 +1,28 @@
+flowchart TB
+  %% PHASE 1 + 2: Proxmox + pfSense Segmentation Baseline
+
+  ISP["ISP Router/ONT\n(Bridge mode preferred)"] --> WAN["pfSense (WAN)"]
+
+  subgraph EDGE["Phase 2: Secure Edge (pfSense 2.7.2)"]
+    WAN
+    TRUNK["LAN (802.1Q trunk)\nVLANs + Routing + Firewall Policy"]
+  end
+
+  TRUNK --> PVE["Phase 1: Proxmox VE Host (UM790)\nVMs/CTs + VLAN-aware bridging"]
+
+  subgraph ZONES["Segmentation Zones (Planned)"]
+    V10["VLAN 10 - MGMT\nProxmox UI/SSH + Admin access"]
+    V20["VLAN 20 - INTERNAL/LAB\nEVE-NG + internal services"]
+    V30["VLAN 30 - DMZ\nPublic-facing test services"]
+    V40["VLAN 40 - STORAGE (optional)\nNAS/NFS/iSCSI traffic"]
+  end
+
+  PVE --> V10
+  PVE --> V20
+  PVE --> V30
+  PVE --> V40
+
+  note1["Policy intent:\n- Default deny between VLANs\n- MGMT can administer infra\n- INTERNAL/LAB limited access\n- DMZ isolated\n- STORAGE isolated"]:::note
+  TRUNK --- note1
+
+  classDef note fill:#111827,stroke:#374151,color:#fff;

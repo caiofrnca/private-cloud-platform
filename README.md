@@ -4,7 +4,7 @@
 
 ### Overview
 
-This repository documents the design, implementation, and evolution of a layered private cloud platform running on a Minisforum UM790.
+This repository documents the design, implementation, and evolution of a layered private cloud platform running on a mini-pc (Minisforum UM790).
 
 I wanted a space to get my hands dirty with AI and serious infrastructure, so I'm building a private cloud that's as professional as it is personal.
 
@@ -24,7 +24,7 @@ The objective is to build an enterprise-style, security-first infrastructure usi
 
 ---
 
-### 🎯 Current Status (v0.1)
+### 🎯 Current Status (v0.1) - February 2026
 
 #### ✅ Phase 1 – Foundation Layer
 - Proxmox VE 9.1 installed on bare metal
@@ -64,7 +64,6 @@ private-cloud-platform/
  ├── 1-networking/ 
 ```
 #### 0-foundation/
-Contains:
 - Hardware inventory
 - BIOS configuration notes
 - Proxmox configuration
@@ -72,7 +71,6 @@ Contains:
 - Performance baselines
 
 #### 1-networking/
-Contains:
 - Subnet definitions
 - Firewall zone definitions
 - VLAN architecture
