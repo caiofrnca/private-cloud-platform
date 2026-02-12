@@ -19,16 +19,17 @@ The objective is to build an enterprise-style, security-first infrastructure usi
 
 -> This is not a home lab experiment.  
 -> This is a reproducible platform engineering project.
--> And yes, an AI does help with the 'aesthetic emoji' formatting here. My human brain is busy making sure the engineering actually works.
+
+-> And YES, an AI does help with the 'aesthetic emoji' formatting here. My human brain is busy making sure the engineering actually works.
 
 ---
 
 ### 🎯 Current Status (v0.1)
 
 #### ✅ Phase 1 – Foundation Layer
-- Proxmox VE installed on bare metal
+- Proxmox VE 9.1 installed on bare metal
 - Hypervisor networking configured
-- Initial resource profiles defined
+- Initial resource profiles defined and secured
 - Baseline connectivity validated
 
 #### ✅ Phase 2 – Networking Layer (In Progress)
@@ -41,7 +42,7 @@ The objective is to build an enterprise-style, security-first infrastructure usi
 ---
 
 ### 🧱 Architecture (Current State)
-'''text
+```text
 Internet
  ↓
  ISP Router
@@ -53,15 +54,15 @@ Internet
  LAN / VLAN Segmentation
  ↓
  Virtual Machines / Services
-'''
+```
 ---
 
 ### 📂 Repository Structure
-'''text
+```text
 private-cloud-platform/
  ├── 0-foundation/ 
  ├── 1-networking/ 
-'''
+```
 #### 0-foundation/
 Contains:
 - Hardware inventory
