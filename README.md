@@ -22,6 +22,8 @@ The objective is to build an enterprise-style, security-first infrastructure usi
 
 -> And YES, an AI does help with the 'aesthetic emoji' formatting here. My human brain is busy making sure the engineering actually works.
 
+Ps: This README will evolve with each phase!
+
 ---
 
 ### 🎯 Current Status (v0.1) - February 2026
@@ -57,18 +59,41 @@ Internet
 ```
 ---
 
-### 📂 Repository Structure
+### 📂 Repository Structure overview
 ```text
 private-cloud-platform/
- ├── 0-foundation/ 
- ├── 1-networking/ 
+├── 0-foundation/           # ✅ Completed
+│   ├── 00-hardware/        # BIOS settings, benchmarks
+│   ├── 01-hypervisor/      # Proxmox configs, templates
+│   └── 02-kubernetes/      # Future K8s planning 
+│
+├── 1-networking/           # 🔄 In Progress
+│   ├── definitions/        # Subnets, VLANs, firewall zones
+│   ├── pfsense/            # Config backups, rules
+│   └── wireguard/          # VPN configuration
+│
+├── Loading....
+│
+│
+├── scripts/                # Utility scripts
+│   ├── bootstrap.sh        # Phase-based bootstrap
+│   ├── backup.sh           # Wrapper for vzdump
+│   └── create-vm.sh        # VM creation helper
+│
+├── docs/                   # Documentation
+│   ├── architecture/       # ADRs, diagrams
+│   └── runbooks/           # Operational procedures, lessons learned
+│
+├── JUSTIFICATION.md        # Why this project exists, design philosophy 
+├── README.md               # You are here
+└── ROADMAP.md              # Moved up, versioned milestones
+
 ```
 #### 0-foundation/
 - Hardware inventory
 - BIOS configuration notes
 - Proxmox configuration
 - Hypervisor network design
-- Performance baselines
 
 #### 1-networking/
 - Subnet definitions
@@ -113,18 +138,6 @@ Next milestones:
 
 ---
 
-### 📈 Why This Exists
-
-This project serves as:
-
-- Platform engineering practice
-- Network security laboratory
-- AI-capable infrastructure base
-- Documentation portfolio
-- Continuous learning system
-
----
-
 ### 🚀 Evolution
 
 This platform will expand into:
@@ -135,7 +148,5 @@ This platform will expand into:
 - AI/ML workloads
 - Disaster recovery automation
 - Chaos engineering
-
-This README will evolve with each phase!
 
 ---
