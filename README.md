@@ -11,7 +11,7 @@ I wanted a space to get my hands dirty with AI and serious infrastructure, so I'
 The objective is to build an enterprise-style, security-first infrastructure using:
 
 - **Proxmox VE** (virtualization layer)
-- **pfSense 2.7.2** (secure edge & segmentation)
+- **pfSense** (secure edge & segmentation)
 - Network-as-Code principles
 - Documentation-as-Code
 - Infrastructure-as-Code (IaC)
@@ -29,16 +29,17 @@ Ps: This README will evolve with each phase!
 ### 🎯 Current Status (v0.1) - February 2026
 
 #### ✅ Phase 1 – Foundation Layer
-- Proxmox VE 9.1 installed on bare metal
+- Proxmox VE installed on bare metal
 - Hypervisor networking configured
 - Initial resource profiles defined and secured
 - Baseline connectivity validated
+- Foundation documentation added (`0-foundation/`)
 
 #### ✅ Phase 2 – Networking Layer (In Progress)
-- pfSense 2.7.2 deployed as VM
+- pfSense deployed as VM (WAN + trunk LAN)
+- VLAN architecture implemented
 - WAN + LAN interfaces configured
 - Initial segmentation introduced
-- VLAN structure defined
 - Basic firewall rule strategy applied
 
 ---
@@ -110,7 +111,7 @@ private-cloud-platform/
 - Segmentation before services
 - Everything version controlled
 - No secrets committed
-- Recovery procedures documented
+- Rollback mindset (snapshots/backups before major changes)
 - Reproducibility over convenience
 
 ---
@@ -119,7 +120,7 @@ private-cloud-platform/
 
 Next milestones:
 
-- [ ] Complete VLAN isolation model
+- [x] Complete VLAN isolation model
 - [ ] Formalize firewall rule matrix
 - [ ] Move Proxmox management into dedicated VLAN
 - [ ] Introduce WireGuard secure remote access
@@ -132,8 +133,8 @@ Next milestones:
 - [x] Proxmox reachable via management IP
 - [x] pfSense WAN receives DHCP from ISP
 - [x] LAN interface operational
-- [ ] Inter-VLAN isolation validated
-- [ ] Backup strategy implemented
+- [x] Inter-VLAN isolation validated
+- [x] Backup strategy implemented
 - [ ] Configuration export stored
 
 ---
