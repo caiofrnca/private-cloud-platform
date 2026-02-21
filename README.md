@@ -4,7 +4,7 @@
 
 ### Overview
 
-This repository documents the design, implementation, and evolution of a layered private cloud platform running on a mini-pc (Minisforum UM790).
+This repository documents the design, implementation, and evolution of a layered private cloud platform running on a Mini-pc (Minisforum UM790).
 
 I wanted a space to get my hands dirty with AI and serious infrastructure, so I'm building a private cloud that's as professional as it is personal.
 
@@ -20,13 +20,11 @@ The objective is to build an enterprise-style, security-first infrastructure usi
 -> This is not a home lab experiment.  
 -> This is a reproducible platform engineering project.
 
--> And YES, an AI does help with the 'aesthetic emoji' formatting here. My human brain is busy making sure the engineering actually works.
-
-Ps: This README will evolve with each phase!
+-> Documentation is iterative and improves with each phase.
 
 ---
 
-### 🎯 Current Status (v0.1) - February 2026
+### 🎯 Current Status (v0.4) - February 2026
 
 ### Phase 1 — Foundation
 - Proxmox installed on bare metal (UM790)
@@ -68,20 +66,23 @@ See diagrams in `docs/architecture/diagrams/`.
 ### 📂 Repository Structure overview
 ```text
 private-cloud-platform/
-├── 0-foundation/                   # Hardware & Hypervisor
-├── 1-networking/                   # Network as Code
-├── 2-storage/                      # Software-defined Storage
-├── 3-identity/                     # SSO & Directory Services
-├── 4-core-services/                # Monitoring, Logging, DNS
-├── 5-applications/                 # Media, Home, Productivity
-├── 6-ai-ml/                        # MLOps Pipeline
-├── 7-observability/                # Telemetry & Service Mesh
-├── 8-security/                     # Compliance & Hardening
-├── 9-disaster-recovery/            # Business Continuity
-|
-├── JUSTIFICATION.md        # Why this project exists, design philosophy 
-├── README.md               # You are here
-└── ROADMAP.md              # Moved up, versioned milestones
+├── 0-foundation/          # Hardware & Hypervisor
+├── 1-networking/          # VLANs, pfSense, PKI trust
+├── 2-storage/             # Storage & backup architecture
+├── 3-identity/            # SSO, directory, secrets
+├── 4-core-services/       # Reverse proxy, monitoring, DNS
+├── 5-applications/        # Platform & user applications
+├── 6-ai-ml/               # AI/ML workloads
+├── 7-observability/       # Telemetry & SLOs
+├── 8-security/            # Hardening & compliance
+├── 9-disaster-recovery/   # Restore & continuity
+│
+├── docs/                  # ADRs, diagrams, runbooks
+├── scripts/               # Operational tooling
+│
+├── JUSTIFICATION.md       # Design philosophy
+├── ROADMAP.md             # Versioned milestones
+└── README.md              # Project overview
 
 ```
 #### 0-foundation/

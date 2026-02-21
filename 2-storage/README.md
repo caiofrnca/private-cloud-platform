@@ -1,15 +1,18 @@
-# 2-storage
+## 2-storage
 
-## Purpose
+### Objective
+Provide resilient and reproducible storage architecture for the platform.
 
-TODO: Define the role of this layer in the private cloud platform.
+### Planned Components
+- NAS / NFS
+- Ceph (future HA)
+- Backup policies (restic)
+- Restore validation procedures
 
-## Scope
+### Dependencies
+- VLAN60 (STORAGE)
+- VLAN50 (SERVERS)
+- pfSense inter-VLAN policy
 
-- TODO
-- TODO
-- TODO
-
-## Status
-
-Not started.
+### Status
+Planning phase.
