@@ -28,19 +28,21 @@ Ps: This README will evolve with each phase!
 
 ### 🎯 Current Status (v0.1) - February 2026
 
-#### ✅ Phase 1 – Foundation Layer
-- Proxmox VE installed on bare metal
-- Hypervisor networking configured
-- Initial resource profiles defined and secured
-- Baseline connectivity validated
-- Foundation documentation added (`0-foundation/`)
+### Phase 1 — Foundation
+- Proxmox installed on bare metal (UM790)
+- Single VLAN-aware trunk bridge design adopted (vmbr0)
+- Baseline host access validated
 
-#### ✅ Phase 2 – Networking Layer (In Progress)
-- pfSense deployed as VM (WAN + trunk LAN)
-- VLAN architecture implemented
-- WAN + LAN interfaces configured
-- Initial segmentation introduced
-- Basic firewall rule strategy applied
+### Phase 2 — Networking
+- pfSense deployed as VM
+- Supernet locked: **10.200.0.0/16**
+- VLAN gateways implemented (pfSense as default gateway per VLAN)
+- Phase 1 access matrix baseline established (default deny east-west; explicit allows)
+
+### Phase 4/5 — Core Services + Applications (early validation win)
+- Traefik terminating HTTPS using **Step-CA issued certs**
+- OpenClaw published behind Traefik with working **WebSocket upgrade**
+  - Browser → HTTPS (Traefik + Step-CA) → OpenClaw UI → WebSocket → Gateway → Device Connected
 
 ---
 
@@ -54,37 +56,29 @@ Internet
  ↓
  pfSense (WAN)
  ↓
- LAN / VLAN Segmentation
+ pfSense (LAN trunk: VLAN)
  ↓
- Virtual Machines / Services
+Proxmox (vmbr0 trunk)
+ ↓
+VMs / Services (Traefik, Step-CA, OpenClaw, ...)
 ```
+See diagrams in `docs/architecture/diagrams/`.
 ---
 
 ### 📂 Repository Structure overview
 ```text
 private-cloud-platform/
-├── 0-foundation/           # ✅ Completed
-│   ├── 00-hardware/        # BIOS settings, benchmarks
-│   ├── 01-hypervisor/      # Proxmox configs, templates
-│   └── 02-kubernetes/      # Future K8s planning 
-│
-├── 1-networking/           # 🔄 In Progress
-│   ├── definitions/        # Subnets, VLANs, firewall zones
-│   ├── pfsense/            # Config backups, rules
-│   └── wireguard/          # VPN configuration
-│
-├── Loading....
-│
-│
-├── scripts/                # Utility scripts
-│   ├── bootstrap.sh        # Phase-based bootstrap
-│   ├── backup.sh           # Wrapper for vzdump
-│   └── create-vm.sh        # VM creation helper
-│
-├── docs/                   # Documentation
-│   ├── architecture/       # ADRs, diagrams
-│   └── runbooks/           # Operational procedures, lessons learned
-│
+├── 0-foundation/                   # Hardware & Hypervisor
+├── 1-networking/                   # Network as Code
+├── 2-storage/                      # Software-defined Storage
+├── 3-identity/                     # SSO & Directory Services
+├── 4-core-services/                # Monitoring, Logging, DNS
+├── 5-applications/                 # Media, Home, Productivity
+├── 6-ai-ml/                        # MLOps Pipeline
+├── 7-observability/                # Telemetry & Service Mesh
+├── 8-security/                     # Compliance & Hardening
+├── 9-disaster-recovery/            # Business Continuity
+|
 ├── JUSTIFICATION.md        # Why this project exists, design philosophy 
 ├── README.md               # You are here
 └── ROADMAP.md              # Moved up, versioned milestones
@@ -116,26 +110,33 @@ private-cloud-platform/
 
 ---
 
-### 🛣 Roadmap
+### 🛣 Roadmap (next)
 
-Next milestones:
+- [ ] Formalize firewall matrix as code and generate pfSense rules
+- [ ] Standardize DNS naming + internal zones
+- [ ] WireGuard / VPN VLAN100 with role-based access
+- [ ] GitOps bootstrap (Flux) for Traefik + cert issuance + apps
+- [ ] Observability baseline (Prometheus/Grafana/Loki) in VLAN80
 
-- [x] Complete VLAN isolation model
-- [ ] Formalize firewall rule matrix
-- [ ] Move Proxmox management into dedicated VLAN
-- [ ] Introduce WireGuard secure remote access
-- [ ] Document full segmentation validation
 
 ---
 
 ### 🧪 Validation Checklist
 
+#### Foundation
 - [x] Proxmox reachable via management IP
-- [x] pfSense WAN receives DHCP from ISP
-- [x] LAN interface operational
-- [x] Inter-VLAN isolation validated
-- [x] Backup strategy implemented
-- [ ] Configuration export stored
+- [x] Proxmox trunk networking validated
+
+#### Networking
+- [x] pfSense WAN working (ISP DHCP)
+- [x] VLAN gateways active (10.200.x.1)
+- [x] Baseline isolation policy applied
+- [ ] Inter-VLAN matrix fully validated + documented
+
+#### Services (Ingress/PKI/App)
+- [x] Step-CA issues certs for internal services
+- [x] Traefik serves HTTPS with Step-CA cert
+- [x] OpenClaw accessible via HTTPS + WebSockets
 
 ---
 
